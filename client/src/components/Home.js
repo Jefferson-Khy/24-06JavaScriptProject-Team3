@@ -13,6 +13,7 @@ export default function Home() {
     e.preventDefault();
     navigate('/signup');
   };
+
   return (
     <>
       <button onClick={loginClick}>Login</button>
