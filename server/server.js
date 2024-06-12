@@ -3,6 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const dotenv = require('dotenv');
 const apiRoutes = require('./controllers/api');
+const axios = require('axios');
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(
       'Authorization',
       'Content-Type',
       'ngrok-skip-browser-warning',
+      'no-cors',
     ],
   })
 );
@@ -25,6 +27,19 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/api', apiRoutes);
+
+app.get('/moov-proxy', async (req, res) => {
+  try {
+    const response = await axios.get(
+      'https://api.moov.io/accounts/cbea4c0a-7800-4195-8cf8-f65fd3fbd9f5/capabilities'
+    );
+
+    res.status(response.status).json(response.data);
+  } catch (error) {
+    console.error('Error:', error.message);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
