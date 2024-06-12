@@ -75,4 +75,34 @@ router.get('/generate-account-token', async (req, res) => {
   }
 });
 
+router.get('/retrieve-account', async (req, res) => {
+  const { accountID } = req.query;
+  console.log(
+    'Received request to retrieve account details for accountID:',
+    accountID
+  );
+
+  const moov = new Moov({
+    accountID: process.env.MOOV_ACCOUNT_ID,
+    publicKey: process.env.PUBLIC_KEY,
+    secretKey: process.env.PRIVATE_KEY,
+    domain: process.env.DOMAIN,
+  });
+
+  const scopes = [`/accounts/${accountID}/profile.read`];
+
+  try {
+    console.log('Generating token with scopes for account details:', scopes);
+    const { token } = await moov.generateToken(scopes);
+    console.log('Token for account details generated:', token);
+
+    const accountDetails = await moov.get(`/accounts/${accountID}`, { token });
+    console.log('Account details retrieved:', accountDetails);
+    return res.status(200).json({ accountDetails });
+  } catch (error) {
+    console.error(`Error retrieving account details: ${error.message}`);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 module.exports = router;

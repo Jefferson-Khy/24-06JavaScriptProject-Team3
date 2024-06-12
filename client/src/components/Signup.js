@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import { loadMoov } from '@moovio/moov-js';
 import header from '../assets/header.png';
+import { useNavigate } from 'react-router-dom';
 
 export default function Signup() {
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchToken = async () => {
       try {
@@ -35,6 +38,7 @@ export default function Signup() {
           if (resourceType === 'account') {
             const { accountID } = resource;
             console.log(`Account created with ID: ${accountID}`);
+            localStorage.setItem('accountID', accountID);
 
             try {
               const accountTokenResponse = await fetch(
@@ -62,25 +66,15 @@ export default function Signup() {
               );
               paymentMethods.token = accountToken;
               paymentMethods.accountID = accountID;
-              paymentMethods.plaid = {
-                env: 'sandbox',
-                redirectURL: 'http://localhost:3000',
-                receivedRedirectUri: window.location.href.includes(
-                  '?oauth_state_id'
-                )
-                  ? window.location.href
-                  : undefined,
-                onExit: (...args) => console.log('on plaid exit', ...args),
-                onEvent: (...args) => console.log('on plaid event', ...args),
-                onLoad: (...args) => console.log('on plaid load', ...args),
-                onSuccess: (...args) =>
-                  console.log('on plaid success', ...args),
-              };
+
               onboarding.open = false;
               paymentMethods.open = true;
-              // paymentMethods.open = false;
 
-              console.log('Payment methods Drop initialized with Plaid');
+              paymentMethods.onCancel = () => {
+                console.log('User canceled linking payment method');
+                paymentMethods.open = false;
+                navigate('/newpage');
+              };
             } catch (error) {
               console.error('Error fetching account token:', error);
             }
