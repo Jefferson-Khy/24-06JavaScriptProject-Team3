@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react';
-import { loadMoov } from '@moovio/moov-js';
+import React, { useEffect } from "react";
+import { loadMoov } from "@moovio/moov-js";
+import header from "../assets/header.png";
 
 export default function Signup() {
   useEffect(() => {
     const fetchToken = async () => {
       try {
         const response = await fetch(
+<
           'https://867f-2600-1700-8520-9ba0-b1c7-ace8-9a98-d726.ngrok-free.app/api/generate-token',
           {
-            method: 'GET',
+            method: "GET",
             headers: {
-              'Content-Type': 'application/json',
-              'ngrok-skip-browser-warning': 'true',
+              "Content-Type": "application/json",
+              "ngrok-skip-browser-warning": "true",
             },
           }
         );
@@ -24,6 +26,7 @@ export default function Signup() {
         const initialToken = data.token;
         const moovInstance = await loadMoov(initialToken);
         console.log('Moov.js loaded with initial token:', moovInstance);
+
 
         const onboarding = document.querySelector('moov-onboarding');
         onboarding.token = initialToken;
@@ -46,6 +49,7 @@ export default function Signup() {
                   },
                 }
               );
+
 
               if (!accountTokenResponse.ok) {
                 throw new Error(
@@ -79,6 +83,7 @@ export default function Signup() {
               paymentMethods.open = true;
               paymentMethods.open = false;
 
+
               console.log('Payment methods Drop initialized with Plaid');
             } catch (error) {
               console.error('Error fetching account token:', error);
@@ -94,9 +99,16 @@ export default function Signup() {
   }, []);
 
   return (
-    <>
+    <div
+      className="bg-cover min-h-screen"
+      style={{ backgroundImage: `url(${header})` }}
+    >
       <moov-onboarding></moov-onboarding>
+
       <moov-payment-methods></moov-payment-methods>
     </>
+
+    </div>
+
   );
 }
