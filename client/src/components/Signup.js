@@ -1,17 +1,18 @@
-import React, { useEffect } from 'react';
-import { loadMoov } from '@moovio/moov-js';
+import React, { useEffect } from "react";
+import { loadMoov } from "@moovio/moov-js";
+import header from "../assets/header.png";
 
 export default function Signup() {
   useEffect(() => {
     const fetchToken = async () => {
       try {
         const response = await fetch(
-          'https://442a-70-118-49-245.ngrok-free.app/api/generate-token',
+          "https://ed80-70-118-49-243.ngrok-free.app/api/generate-token",
           {
-            method: 'GET',
+            method: "GET",
             headers: {
-              'Content-Type': 'application/json',
-              'ngrok-skip-browser-warning': 'true',
+              "Content-Type": "application/json",
+              "ngrok-skip-browser-warning": "true",
             },
           }
         );
@@ -19,16 +20,16 @@ export default function Signup() {
         const initialToken = data.token;
         const moovInstance = await loadMoov(initialToken);
 
-        const onboarding = document.querySelector('moov-onboarding');
+        const onboarding = document.querySelector("moov-onboarding");
 
         // console.log('Moov object:', moovInstance);
 
         // console.log('Onboarding element:', onboarding);
 
-        if ('token' in onboarding) {
-          console.log('Current token:', onboarding.token);
+        if ("token" in onboarding) {
+          console.log("Current token:", onboarding.token);
           onboarding.token = initialToken;
-          console.log('Updated token:', onboarding.token);
+          console.log("Updated token:", onboarding.token);
 
           onboarding.open = true;
         } else {
@@ -37,9 +38,9 @@ export default function Signup() {
           );
         }
 
-        console.log('Moov.js initialized successfully:', moovInstance);
+        console.log("Moov.js initialized successfully:", moovInstance);
       } catch (error) {
-        console.error('Error fetching token:', error);
+        console.error("Error fetching token:", error);
       }
     };
 
@@ -47,8 +48,11 @@ export default function Signup() {
   }, []);
 
   return (
-    <>
+    <div
+      className="bg-cover min-h-screen"
+      style={{ backgroundImage: `url(${header})` }}
+    >
       <moov-onboarding></moov-onboarding>
-    </>
+    </div>
   );
 }
