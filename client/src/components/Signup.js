@@ -1,12 +1,13 @@
 import React, { useEffect } from 'react';
 import { loadMoov } from '@moovio/moov-js';
+import './global.css';
 
 export default function Signup() {
   useEffect(() => {
     const fetchToken = async () => {
       try {
         const response = await fetch(
-          'https://df7f-2600-1700-8520-9ba0-b1c7-ace8-9a98-d726.ngrok-free.app/api/generate-token',
+          'https://867f-2600-1700-8520-9ba0-b1c7-ace8-9a98-d726.ngrok-free.app/api/generate-token',
           {
             method: 'GET',
             headers: {
@@ -20,10 +21,6 @@ export default function Signup() {
         const moovInstance = await loadMoov(initialToken);
 
         const onboarding = document.querySelector('moov-onboarding');
-
-        // console.log('Moov object:', moovInstance);
-
-        // console.log('Onboarding element:', onboarding);
 
         if ('token' in onboarding) {
           console.log('Current token:', onboarding.token);
@@ -48,7 +45,16 @@ export default function Signup() {
 
   return (
     <>
-      <moov-onboarding></moov-onboarding>
+      <div className='header-container'>
+        <div className='header-content'>
+          <img className='cube-icon' src='cube.svg' alt='cube' />
+          <h1 className='site-name'>SubFusion</h1>
+        </div>
+      </div>
+      <main>
+        <moov-onboarding></moov-onboarding>
+        <moov-payment-methods></moov-payment-methods>
+      </main>
     </>
   );
 }

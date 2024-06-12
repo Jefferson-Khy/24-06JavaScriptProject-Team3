@@ -1,0 +1,86 @@
+* {
+  margin: auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  color: rgb(255, 255, 255);
+  padding: 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+footer {
+  background-color: black;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+main {
+  background-image: linear-gradient(to right bottom, #8b6ae2, #638df1, #54a7f1, #6ebde8, #9acedf, #9ed8e2, #a5e2e3, #b0ece3, #92f4d9, #7df9c4, #78fda5, #85ff7d);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  padding-top: 50px; 
+  padding-bottom: 50px; 
+}
+
+.site-name {
+  font-size: 55px;
+  font-weight: 100;
+}
+
+.welcome-text {
+  color: rgb(254, 254, 254);
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+main.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
+.header-container {
+  color: rgb(255, 255, 255);
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+.cube-icon {
+  width: 50px; 
+  height: 50px; 
+  margin-right: 8px;
+}
+
+a, u {
+  text-decoration: none;
+  color:white;
+}
