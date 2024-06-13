@@ -19,7 +19,7 @@ const fetcher = async (url) => {
   return data.accountDetails;
 };
 
-export default function NewPage() {
+export default function Profile() {
   const storedAccountID = localStorage.getItem('accountID');
 
   const { data: accountDetails, error } = useSWR(
