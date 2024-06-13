@@ -18,7 +18,6 @@ app.use(
       'Authorization',
       'Content-Type',
       'ngrok-skip-browser-warning',
-      'no-cors',
     ],
   })
 );
