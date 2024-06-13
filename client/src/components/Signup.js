@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
-import { loadMoov } from "@moovio/moov-js";
-import header from "../assets/header.png";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+import React, { useEffect } from 'react';
+import { loadMoov } from '@moovio/moov-js';
+import header from '../assets/header.png';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -12,12 +12,12 @@ export default function Signup() {
     const fetchToken = async () => {
       try {
         const response = await fetch(
-          "https://6b60-70-118-49-243.ngrok-free.app/api/generate-token",
+          'https://techhive-app-96b92969b3d5.herokuapp.com/api/generate-token',
           {
-            method: "GET",
+            method: 'GET',
             headers: {
-              "Content-Type": "application/json",
-              "ngrok-skip-browser-warning": "true",
+              'Content-Type': 'application/json',
+              'ngrok-skip-browser-warning': 'true',
             },
           }
         );
@@ -29,27 +29,27 @@ export default function Signup() {
         const data = await response.json();
         const initialToken = data.token;
         const moovInstance = await loadMoov(initialToken);
-        console.log("Moov.js loaded with initial token:", moovInstance);
+        console.log('Moov.js loaded with initial token:', moovInstance);
 
-        const onboarding = document.querySelector("moov-onboarding");
+        const onboarding = document.querySelector('moov-onboarding');
         onboarding.token = initialToken;
         onboarding.open = true;
-        console.log("Onboarding token set:", onboarding.token);
+        console.log('Onboarding token set:', onboarding.token);
 
         onboarding.onResourceCreated = async ({ resourceType, resource }) => {
-          if (resourceType === "account") {
+          if (resourceType === 'account') {
             const { accountID } = resource;
             console.log(`Account created with ID: ${accountID}`);
-            localStorage.setItem("accountID", accountID);
+            localStorage.setItem('accountID', accountID);
 
             try {
               const accountTokenResponse = await fetch(
-                `https://6b60-70-118-49-243.ngrok-free.app/api/generate-account-token?newAccountID=${accountID}`,
+                `https://techhive-app-96b92969b3d5.herokuapp.com/api/generate-account-token?newAccountID=${accountID}`,
                 {
-                  method: "GET",
+                  method: 'GET',
                   headers: {
-                    "Content-Type": "application/json",
-                    "ngrok-skip-browser-warning": "true",
+                    'Content-Type': 'application/json',
+                    'ngrok-skip-browser-warning': 'true',
                   },
                 }
               );
@@ -64,7 +64,7 @@ export default function Signup() {
               const accountToken = accountTokenData.token;
 
               const paymentMethods = document.querySelector(
-                "moov-payment-methods"
+                'moov-payment-methods'
               );
               paymentMethods.token = accountToken;
               paymentMethods.accountID = accountID;
@@ -73,21 +73,21 @@ export default function Signup() {
               paymentMethods.open = true;
 
               paymentMethods.onCancel = () => {
-                console.log("User canceled linking payment method");
+                console.log('User canceled linking payment method');
                 paymentMethods.open = false;
                 if (!isToastShown) {
                   toast("YOU'RE REGISTERED!!");
                   isToastShown = true;
                 }
-                navigate("/userdashboard");
+                navigate('/userdashboard');
               };
             } catch (error) {
-              console.error("Error fetching account token:", error);
+              console.error('Error fetching account token:', error);
             }
           }
         };
       } catch (error) {
-        console.error("Error fetching initial token:", error);
+        console.error('Error fetching initial token:', error);
       }
     };
 
@@ -97,7 +97,7 @@ export default function Signup() {
   return (
     <>
       <div
-        className="min-h-screen bg-cover"
+        className='min-h-screen bg-cover'
         style={{ backgroundImage: `url(${header})` }}
       >
         <moov-onboarding></moov-onboarding>

@@ -39,7 +39,7 @@ export default function UserDashboard() {
 
   const { data: accountDetails, error } = useSWR(
     storedAccountID
-      ? `https://6b60-70-118-49-243.ngrok-free.app/api/retrieve-account?accountID=${storedAccountID}`
+      ? `https://techhive-app-96b92969b3d5.herokuapp.com/api/retrieve-account?accountID=${storedAccountID}`
       : null,
     fetcher
   );
@@ -60,7 +60,7 @@ export default function UserDashboard() {
 
   return (
     <div
-      className="bg-gray-900 py-12 bg-cover min-h-screen"
+      className="min-h-screen py-12 bg-gray-900 bg-cover"
       style={{ backgroundImage: `url(${header})` }}
     >
       {/* <!-- component --> */}
@@ -68,8 +68,8 @@ export default function UserDashboard() {
         <div className="flex-grow bg-gray-50/50">
           <aside className="bg-gradient-to-br from-gray-800 to-gray-900 -translate-x-80 fixed inset-0 z-50 my-4 ml-4 h-[calc(100vh-32px)] w-72 rounded-xl transition-transform duration-300 xl:translate-x-0">
             <div className="relative border-b border-white/20">
-              <a className="flex items-center gap-4 py-6 px-8" href="#/">
-                <h6 className="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-white">
+              <a className="flex items-center gap-4 px-8 py-6" href="#/">
+                <h6 className="block font-sans text-base antialiased font-semibold leading-relaxed tracking-normal text-white">
                   TechHive
                 </h6>
               </a>
@@ -77,7 +77,7 @@ export default function UserDashboard() {
                 className="middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-8 max-w-[32px] h-8 max-h-[32px] rounded-lg text-xs text-white hover:bg-white/10 active:bg-white/30 absolute right-0 top-0 grid rounded-br-none rounded-tl-none xl:hidden"
                 type="button"
               >
-                <span className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -85,7 +85,7 @@ export default function UserDashboard() {
                     strokeWidth="2.5"
                     stroke="currentColor"
                     aria-hidden="true"
-                    className="h-5 w-5 text-white"
+                    className="w-5 h-5 text-white"
                   >
                     <path
                       strokeLinecap="round"
@@ -97,7 +97,7 @@ export default function UserDashboard() {
               </button>
             </div>
             <div className="m-4">
-              <ul className="mb-4 flex flex-col gap-1">
+              <ul className="flex flex-col gap-1 mb-4">
                 <li>
                   <a aria-current="page" className="active" href="#">
                     <button
@@ -114,7 +114,7 @@ export default function UserDashboard() {
                         <path d="M11.47 3.84a.75.75 0 011.06 0l8.69 8.69a.75.75 0 101.06-1.06l-8.689-8.69a2.25 2.25 0 00-3.182 0l-8.69 8.69a.75.75 0 001.061 1.06l8.69-8.69z"></path>
                         <path d="M12 5.432l8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 01-.75-.75v-4.5a.75.75 0 00-.75-.75h-3a.75.75 0 00-.75.75V21a.75.75 0 01-.75.75H5.625a1.875 1.875 0 01-1.875-1.875v-6.198a2.29 2.29 0 00.091-.086L12 5.43z"></path>
                       </svg>
-                      <p className="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">
+                      <p className="block font-sans text-base antialiased font-medium leading-relaxed capitalize text-inherit">
                         dashboard
                       </p>
                     </button>
@@ -123,7 +123,7 @@ export default function UserDashboard() {
                 <li>
                   <a className="" href="#">
                     <button
-                      className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
+                      className="flex items-center w-full gap-4 px-4 py-3 font-sans text-xs font-bold text-white capitalize transition-all rounded-lg middle none center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none hover:bg-white/10 active:bg-white/30"
                       type="button"
                     >
                       <svg
@@ -139,7 +139,7 @@ export default function UserDashboard() {
                           clipRule="evenodd"
                         ></path>
                       </svg>
-                      <p className="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">
+                      <p className="block font-sans text-base antialiased font-medium leading-relaxed capitalize text-inherit">
                         {accountDetails.displayName}
                       </p>
                     </button>
@@ -148,7 +148,7 @@ export default function UserDashboard() {
                 <li>
                   <a className="" href="#">
                     <button
-                      className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
+                      className="flex items-center w-full gap-4 px-4 py-3 font-sans text-xs font-bold text-white capitalize transition-all rounded-lg middle none center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none hover:bg-white/10 active:bg-white/30"
                       type="button"
                       onClick={accDetClick}
                     >
@@ -165,7 +165,7 @@ export default function UserDashboard() {
                           clipRule="evenodd"
                         ></path>
                       </svg>
-                      <p className="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">
+                      <p className="block font-sans text-base antialiased font-medium leading-relaxed capitalize text-inherit">
                         account details
                       </p>
                     </button>
@@ -174,7 +174,7 @@ export default function UserDashboard() {
                 <li>
                   <a className="" href="#">
                     <button
-                      className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
+                      className="flex items-center w-full gap-4 px-4 py-3 font-sans text-xs font-bold text-white capitalize transition-all rounded-lg middle none center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none hover:bg-white/10 active:bg-white/30"
                       type="button"
                     >
                       <svg
@@ -190,7 +190,7 @@ export default function UserDashboard() {
                           clipRule="evenodd"
                         ></path>
                       </svg>
-                      <p className="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">
+                      <p className="block font-sans text-base antialiased font-medium leading-relaxed capitalize text-inherit">
                         notifactions
                       </p>
                     </button>
@@ -199,7 +199,7 @@ export default function UserDashboard() {
                 <li>
                   <a className="" href="#">
                     <button
-                      className="middle none font-sans font-bold center transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hover:bg-white/10 active:bg-white/30 w-full flex items-center gap-4 px-4 capitalize"
+                      className="flex items-center w-full gap-4 px-4 py-3 font-sans text-xs font-bold text-white capitalize transition-all rounded-lg middle none center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none hover:bg-white/10 active:bg-white/30"
                       type="button"
                       onClick={signOutClick}
                     >
@@ -216,7 +216,7 @@ export default function UserDashboard() {
                           clipRule="evenodd"
                         ></path>
                       </svg>
-                      <p className="block antialiased font-sans text-base leading-relaxed text-inherit font-medium capitalize">
+                      <p className="block font-sans text-base antialiased font-medium leading-relaxed capitalize text-inherit">
                         sign out
                       </p>
                     </button>
@@ -225,20 +225,20 @@ export default function UserDashboard() {
               </ul>
             </div>
           </aside>
-          <div className="p-4 xl:ml-80 flex flex-col min-h-screen">
-            <nav className="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1">
+          <div className="flex flex-col min-h-screen p-4 xl:ml-80">
+            <nav className="block w-full max-w-full px-0 py-1 text-white transition-all bg-transparent shadow-none rounded-xl">
               <div className="flex justify-end">
                 <div className="flex items-center">
                   {/* <button className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-500 hover:bg-blue-gray-500/10 active:bg-blue-gray-500/30 grid xl:hidden" type="button">
-                    <span className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" strokeWidth="3" className="h-6 w-6 text-blue-gray-500">
+                    <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" strokeWidth="3" className="w-6 h-6 text-blue-gray-500">
                         <path fillRule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" clipRule="evenodd"></path>
                     </svg>
                     </span>
                 </button> */}
                   <a href="#">
                     <button
-                      className="middle none font-sans font-bold center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-xs py-3 rounded-lg text-white hidden items-center gap-1 px-4 xl:flex"
+                      className="items-center hidden gap-1 px-4 py-3 font-sans text-xs font-bold text-white uppercase transition-all rounded-lg middle none center disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none xl:flex"
                       type="button"
                     >
                       <svg
@@ -246,7 +246,7 @@ export default function UserDashboard() {
                         viewBox="0 0 24 24"
                         fill="currentColor"
                         aria-hidden="true"
-                        className="text-white h-5 w-5 text-blue-gray-500"
+                        className="w-5 h-5 text-white text-blue-gray-500"
                       >
                         <path
                           fillRule="evenodd"
@@ -260,13 +260,13 @@ export default function UserDashboard() {
                       className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-white grid xl:hidden"
                       type="button"
                     >
-                      <span className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                      <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           viewBox="0 0 24 24"
                           fill="currentColor"
                           aria-hidden="true"
-                          className="h-5 w-5 text-white"
+                          className="w-5 h-5 text-white"
                         >
                           <path
                             fillRule="evenodd"
@@ -281,13 +281,13 @@ export default function UserDashboard() {
                     className="relative middle none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-white"
                     type="button"
                   >
-                    <span className="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                    <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 24 24"
                         fill="currentColor"
                         aria-hidden="true"
-                        className="h-5 w-5 text-blue-gray-500"
+                        className="w-5 h-5 text-blue-gray-500"
                       >
                         <path
                           fillRule="evenodd"
@@ -300,10 +300,10 @@ export default function UserDashboard() {
                 </div>
               </div>
             </nav>
-            <div className="mt-12 flex-grow">
-              <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
-                <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
-                  <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-600 to-blue-400 text-white shadow-blue-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+            <div className="flex-grow mt-12">
+              <div className="grid mb-12 gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
+                <div className="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl">
+                  <div className="absolute grid w-16 h-16 mx-4 -mt-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-gradient-to-tr from-blue-600 to-blue-400 shadow-blue-500/40 place-items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -321,22 +321,22 @@ export default function UserDashboard() {
                     </svg>
                   </div>
                   <div className="p-4 text-right">
-                    <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
+                    <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-600">
                       Amount Due
                     </p>
-                    <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
+                    <h4 className="block font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
                       $0.00
                     </h4>
                   </div>
-                  <div className="border-t border-blue-gray-50 p-4">
-                    <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
+                  <div className="p-4 border-t border-blue-gray-50">
+                    <p className="block font-sans text-base antialiased font-normal leading-relaxed text-blue-gray-600">
                       &nbsp;You’re all set! Your Auto Pay is scheduled for July
                       12
                     </p>
                   </div>
                 </div>
-                <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
-                  <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-red-600 to-red-400 text-white shadow-red-500/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">
+                <div className="relative flex flex-col text-gray-700 bg-white shadow-md bg-clip-border rounded-xl">
+                  <div className="absolute grid w-16 h-16 mx-4 -mt-4 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-gradient-to-tr from-red-600 to-red-400 shadow-red-500/40 place-items-center">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -348,18 +348,18 @@ export default function UserDashboard() {
                     </svg>
                   </div>
                   <div className="p-4 text-right">
-                    <p className="block antialiased font-sans text-sm leading-normal font-normal text-blue-gray-600">
+                    <p className="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-600">
                       Subscription Tier 1
                     </p>
-                    <h4 className="block antialiased tracking-normal font-sans text-2xl font-semibold leading-snug text-blue-gray-900">
+                    <h4 className="block font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
                       $49.99
                     </h4>
                   </div>
-                  <div className="border-t border-blue-gray-50 p-4">
-                    <p className="block antialiased font-sans text-base leading-relaxed font-normal text-blue-gray-600">
+                  <div className="p-4 border-t border-blue-gray-50">
+                    <p className="block font-sans text-base antialiased font-normal leading-relaxed text-blue-gray-600">
                       <button
                         type="button"
-                        className="text-green-600 font-bold"
+                        className="font-bold text-green-600"
                         onClick={chngSubClick}
                       >
                         Change Subscription
@@ -369,30 +369,30 @@ export default function UserDashboard() {
                 </div>
               </div>
 
-              <div className="mb-4 grid grid-cols-1 gap-6 xl:grid-cols-3">
-                <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md overflow-hidden xl:col-span-2">
-                  <div className="relative bg-clip-border rounded-xl overflow-hidden bg-transparent text-gray-700 shadow-none m-0 flex items-center justify-between p-6">
+              <div className="grid grid-cols-1 gap-6 mb-4 xl:grid-cols-3">
+                <div className="relative flex flex-col overflow-hidden text-gray-700 bg-white shadow-md bg-clip-border rounded-xl xl:col-span-2">
+                  <div className="relative flex items-center justify-between p-6 m-0 overflow-hidden text-gray-700 bg-transparent shadow-none bg-clip-border rounded-xl">
                     <div>
-                      <h6 className="block antialiased tracking-normal font-sans font-large text-base font-bold leading-relaxed text-blue-gray-900 mb-1">
+                      <h6 className="block mb-1 font-sans text-base antialiased font-bold leading-relaxed tracking-normal font-large text-blue-gray-900">
                         PAYMENTS
                       </h6>
                     </div>
                   </div>
-                  <div className="p-6 overflow-x-scroll px-0 pt-0 pb-2">
+                  <div className="p-6 px-0 pt-0 pb-2 overflow-x-scroll">
                     <table className="w-full min-w-[640px] table-auto">
                       <thead>
                         <tr>
-                          <th className="border-b border-blue-gray-50 py-3 px-6 text-left">
+                          <th className="px-6 py-3 text-left border-b border-blue-gray-50">
                             <p className="block antialiased font-sans text-[11px] font-medium text-blue-gray-400">
                               Payment Date
                             </p>
                           </th>
-                          <th className="border-b border-blue-gray-50 py-3 px-6 text-left">
+                          <th className="px-6 py-3 text-left border-b border-blue-gray-50">
                             <p className="block antialiased font-sans text-[11px] font-medium text-blue-gray-400">
                               Amount
                             </p>
                           </th>
-                          <th className="border-b border-blue-gray-50 py-3 px-6 text-left">
+                          <th className="px-6 py-3 text-left border-b border-blue-gray-50">
                             <p className="block antialiased font-sans text-[11px] font-medium text-blue-gray-400">
                               Status
                             </p>
@@ -401,97 +401,97 @@ export default function UserDashboard() {
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="py-3 px-5 border-b border-blue-gray-50">
+                          <td className="px-5 py-3 border-b border-blue-gray-50">
                             <div className="flex items-center gap-4">
-                              <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900">
+                              <p className="block font-sans text-sm antialiased leading-normal text-blue-gray-900">
                                 06/12/24
                               </p>
                             </div>
                           </td>
 
-                          <td className="py-3 px-5 border-b border-blue-gray-50">
-                            <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600">
+                          <td className="px-5 py-3 border-b border-blue-gray-50">
+                            <p className="block font-sans text-xs antialiased font-medium text-blue-gray-600">
                               -$49.99
                             </p>
                           </td>
-                          <td className="py-3 px-5 border-b border-blue-gray-50">
-                            <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600">
+                          <td className="px-5 py-3 border-b border-blue-gray-50">
+                            <p className="block font-sans text-xs antialiased font-medium text-blue-gray-600">
                               pending
                             </p>
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-3 px-5 border-b border-blue-gray-50">
+                          <td className="px-5 py-3 border-b border-blue-gray-50">
                             <div className="flex items-center gap-4">
-                              <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900">
+                              <p className="block font-sans text-sm antialiased leading-normal text-blue-gray-900">
                                 05/12/24
                               </p>
                             </div>
                           </td>
-                          <td className="py-3 px-5 border-b border-blue-gray-50">
-                            <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600">
+                          <td className="px-5 py-3 border-b border-blue-gray-50">
+                            <p className="block font-sans text-xs antialiased font-medium text-blue-gray-600">
                               -$49.99
                             </p>
                           </td>
-                          <td className="py-3 px-5 border-b border-blue-gray-50">
-                            <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600">
+                          <td className="px-5 py-3 border-b border-blue-gray-50">
+                            <p className="block font-sans text-xs antialiased font-medium text-blue-gray-600">
                               successful
                             </p>
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-3 px-5 border-b border-blue-gray-50">
+                          <td className="px-5 py-3 border-b border-blue-gray-50">
                             <div className="flex items-center gap-4">
-                              <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900">
+                              <p className="block font-sans text-sm antialiased leading-normal text-blue-gray-900">
                                 04/12/24
                               </p>
                             </div>
                           </td>
-                          <td className="py-3 px-5 border-b border-blue-gray-50">
-                            <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600">
+                          <td className="px-5 py-3 border-b border-blue-gray-50">
+                            <p className="block font-sans text-xs antialiased font-medium text-blue-gray-600">
                               -$99.98
                             </p>
                           </td>
-                          <td className="py-3 px-5 border-b border-blue-gray-50">
-                            <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600">
+                          <td className="px-5 py-3 border-b border-blue-gray-50">
+                            <p className="block font-sans text-xs antialiased font-medium text-blue-gray-600">
                               successful
                             </p>
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-3 px-5 border-b border-blue-gray-50">
+                          <td className="px-5 py-3 border-b border-blue-gray-50">
                             <div className="flex items-center gap-4">
-                              <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900">
+                              <p className="block font-sans text-sm antialiased leading-normal text-blue-gray-900">
                                 03/12/24
                               </p>
                             </div>
                           </td>
-                          <td className="py-3 px-5 border-b border-blue-gray-50">
-                            <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600">
+                          <td className="px-5 py-3 border-b border-blue-gray-50">
+                            <p className="block font-sans text-xs antialiased font-medium text-blue-gray-600">
                               -$49.99
                             </p>
                           </td>
-                          <td className="py-3 px-5 border-b border-blue-gray-50">
-                            <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600 font-bold">
+                          <td className="px-5 py-3 border-b border-blue-gray-50">
+                            <p className="block font-sans text-xs antialiased font-medium font-bold text-blue-gray-600">
                               past due
                             </p>
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-3 px-5 border-b border-blue-gray-50">
+                          <td className="px-5 py-3 border-b border-blue-gray-50">
                             <div className="flex items-center gap-4">
-                              <p className="block antialiased font-sans text-sm leading-normal text-blue-gray-900">
+                              <p className="block font-sans text-sm antialiased leading-normal text-blue-gray-900">
                                 02/12/24
                               </p>
                             </div>
                           </td>
-                          <td className="py-3 px-5 border-b border-blue-gray-50">
-                            <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600">
+                          <td className="px-5 py-3 border-b border-blue-gray-50">
+                            <p className="block font-sans text-xs antialiased font-medium text-blue-gray-600">
                               -$49.99
                             </p>
                           </td>
-                          <td className="py-3 px-5 border-b border-blue-gray-50">
-                            <p className="block antialiased font-sans text-xs font-medium text-blue-gray-600">
+                          <td className="px-5 py-3 border-b border-blue-gray-50">
+                            <p className="block font-sans text-xs antialiased font-medium text-blue-gray-600">
                               successful
                             </p>
                           </td>
@@ -504,8 +504,8 @@ export default function UserDashboard() {
             </div>
             <div className="text-blue-gray-600">
               <footer className="py-2">
-                <div className="flex w-full flex-wrap items-center justify-center gap-6 px-2 md:justify-between">
-                  <p className="block antialiased font-sans text-sm leading-normal font-normal text-inherit text-white">
+                <div className="flex flex-wrap items-center justify-center w-full gap-6 px-2 md:justify-between">
+                  <p className="block font-sans text-sm antialiased font-normal leading-normal text-white text-inherit">
                     © 2024 TechHive{" "}
                   </p>
                   <ul className="flex items-center gap-4">

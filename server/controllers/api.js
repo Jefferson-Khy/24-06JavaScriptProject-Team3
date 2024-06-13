@@ -106,10 +106,8 @@ router.get('/retrieve-account', async (req, res) => {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
-          Origin:
-            'https://f533-2600-1700-8520-9ba0-900a-87b4-ad47-3176.ngrok-free.app',
-          Referer:
-            'https://f533-2600-1700-8520-9ba0-900a-87b4-ad47-3176.ngrok-free.app',
+          Origin: 'https://techhive-app-96b92969b3d5.herokuapp.com/',
+          Referer: 'https://techhive-app-96b92969b3d5.herokuapp.com/',
         },
       }
     );

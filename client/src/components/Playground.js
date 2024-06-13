@@ -1,13 +1,13 @@
-import React, { useEffect } from "react";
-import header from "../assets/header.png";
-import useSWR from "swr";
+import React, { useEffect } from 'react';
+import header from '../assets/header.png';
+import useSWR from 'swr';
 
 const fetcher = async (url) => {
   const response = await fetch(url, {
-    method: "GET",
+    method: 'GET',
     headers: {
-      "Content-Type": "application/json",
-      "ngrok-skip-browser-warning": "true",
+      'Content-Type': 'application/json',
+      'ngrok-skip-browser-warning': 'true',
     },
   });
 
@@ -20,18 +20,18 @@ const fetcher = async (url) => {
 };
 
 export default function ProfileDetails() {
-  const storedAccountID = localStorage.getItem("accountID");
+  const storedAccountID = localStorage.getItem('accountID');
 
   const { data: accountDetails, error } = useSWR(
     storedAccountID
-      ? `https://6b60-70-118-49-243.ngrok-free.app/api/retrieve-account?accountID=${storedAccountID}`
+      ? `https://techhive-app-96b92969b3d5.herokuapp.com/api/retrieve-account?accountID=${storedAccountID}`
       : null,
     fetcher
   );
 
   useEffect(() => {
     if (!storedAccountID) {
-      console.error("Account ID not found in local storage");
+      console.error('Account ID not found in local storage');
     }
   }, [storedAccountID]);
 
@@ -41,22 +41,22 @@ export default function ProfileDetails() {
       profile.individual;
 
     return (
-      <div className="mt-4">
-        <h3 className="text-lg font-semibold">Profile Details:</h3>
+      <div className='mt-4'>
+        <h3 className='text-lg font-semibold'>Profile Details:</h3>
         <p>
-          <span className="font-semibold">Name:</span> {name.firstName}{" "}
+          <span className='font-semibold'>Name:</span> {name.firstName}{' '}
           {name.lastName}
         </p>
         <p>
-          <span className="font-semibold">Email:</span> {email}
+          <span className='font-semibold'>Email:</span> {email}
         </p>
         <p>
-          <span className="font-semibold">Birth Date Provided:</span>{" "}
-          {birthDateProvided ? "Yes" : "No"}
+          <span className='font-semibold'>Birth Date Provided:</span>{' '}
+          {birthDateProvided ? 'Yes' : 'No'}
         </p>
         <p>
-          <span className="font-semibold">Government ID Provided:</span>{" "}
-          {governmentIDProvided ? "Yes" : "No"}
+          <span className='font-semibold'>Government ID Provided:</span>{' '}
+          {governmentIDProvided ? 'Yes' : 'No'}
         </p>
       </div>
     );
@@ -64,11 +64,11 @@ export default function ProfileDetails() {
 
   return (
     <div
-      className="min-h-screen text-white bg-cover"
+      className='min-h-screen text-white bg-cover'
       style={{ backgroundImage: `url(${header})` }}
     >
-      <div className="container px-4 py-8 mx-auto">
-        <h1 className="mb-4 text-4xl font-bold">Account Details</h1>
+      <div className='container px-4 py-8 mx-auto'>
+        <h1 className='mb-4 text-4xl font-bold'>Account Details</h1>
 
         {error && <p>Error retrieving account details.</p>}
         {!error && !accountDetails && <p>Loading account details...</p>}
@@ -76,48 +76,48 @@ export default function ProfileDetails() {
         {accountDetails && (
           <div>
             <p>
-              <span className="font-semibold">Account ID:</span>{" "}
+              <span className='font-semibold'>Account ID:</span>{' '}
               {accountDetails.accountID}
             </p>
             <p>
-              <span className="font-semibold">Account Type:</span>{" "}
+              <span className='font-semibold'>Account Type:</span>{' '}
               {accountDetails.accountType}
             </p>
             <p>
-              <span className="font-semibold">Display Name:</span>{" "}
+              <span className='font-semibold'>Display Name:</span>{' '}
               {accountDetails.displayName}
             </p>
             <p>
-              <span className="font-semibold">Mode:</span> {accountDetails.mode}
+              <span className='font-semibold'>Mode:</span> {accountDetails.mode}
             </p>
             <p>
-              <span className="font-semibold">Created On:</span>{" "}
+              <span className='font-semibold'>Created On:</span>{' '}
               {accountDetails.createdOn}
             </p>
             <p>
-              <span className="font-semibold">Updated On:</span>{" "}
+              <span className='font-semibold'>Updated On:</span>{' '}
               {accountDetails.updatedOn}
             </p>
             <p>
-              <span className="font-semibold">Verification Status:</span>{" "}
+              <span className='font-semibold'>Verification Status:</span>{' '}
               {accountDetails.verification?.verificationStatus}
             </p>
             <p>
-              <span className="font-semibold">
+              <span className='font-semibold'>
                 Terms of Service Accepted Date:
-              </span>{" "}
+              </span>{' '}
               {accountDetails.termsOfService?.acceptedDate}
             </p>
             <p>
-              <span className="font-semibold">
+              <span className='font-semibold'>
                 Terms of Service Accepted IP:
-              </span>{" "}
+              </span>{' '}
               {accountDetails.termsOfService?.acceptedIP}
             </p>
 
             {accountDetails.capabilities && (
-              <div className="mt-4">
-                <h3 className="text-lg font-semibold">Capabilities:</h3>
+              <div className='mt-4'>
+                <h3 className='text-lg font-semibold'>Capabilities:</h3>
                 <ul>
                   {accountDetails.capabilities.map((capability, index) => (
                     <li key={index}>
