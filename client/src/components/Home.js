@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import macbook from "../assets/macbook.svg";
 import appStore from "../assets/App Store.svg";
 import playStore from "../assets/Play Store.svg";
 import header from "../assets/header.png";
@@ -13,6 +12,10 @@ export default function Home() {
     e.preventDefault();
     navigate("/subtiers");
   };
+  const aboutClick = (e) => {
+    e.preventDefault()
+    navigate("/about")
+  }
 
   return (
     <div
@@ -82,7 +85,7 @@ export default function Home() {
                   className="block text-blue-300 py-2 font-bold mb-2"
                   htmlFor="emailaddress"
                 >
-                  We offer a limited version of FREE Tier try TechHive
+                  We offer a limited Free version of TechHive! Click Below to start!
                 </label>
                 {/* <input
                   className="shadow appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
@@ -92,13 +95,20 @@ export default function Home() {
                 /> */}
               </div>
 
-              <div className="flex items-center justify-between pt-4">
+              <div className="flex items-center justify-around pt-4">
                 <button
                   className="bg-gradient-to-r from-purple-800 to-green-500 hover:from-pink-500 hover:to-green-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
                   type="button"
                   onClick={signupClick}
                 >
                   Select Tier Subscription Here
+                </button>
+                <button
+                  className="bg-gradient-to-r from-purple-800 to-green-500 hover:from-pink-500 hover:to-green-500 text-white font-bold py-2 px-4 rounded focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
+                  type="button"
+                  onClick={aboutClick}
+                >
+                  About TechHive
                 </button>
               </div>
             </form>
