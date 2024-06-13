@@ -116,7 +116,7 @@ router.get('/retrieve-account', async (req, res) => {
 
     console.log('Retrieved account details:', response.data);
 
-    return res.status(200).json(response.data);
+    return res.status(200).json({ accountDetails: response.data });
   } catch (error) {
     // if (error.response) {
     //   console.error(
