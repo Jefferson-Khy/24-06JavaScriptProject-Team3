@@ -73,7 +73,7 @@ export default function Signup() {
               paymentMethods.onCancel = () => {
                 console.log('User canceled linking payment method');
                 paymentMethods.open = false;
-                navigate('/newpage');
+                navigate('/profile');
               };
             } catch (error) {
               console.error('Error fetching account token:', error);
