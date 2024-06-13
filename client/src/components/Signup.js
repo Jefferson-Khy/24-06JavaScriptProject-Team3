@@ -10,7 +10,7 @@ export default function Signup() {
     const fetchToken = async () => {
       try {
         const response = await fetch(
-          'https://867f-2600-1700-8520-9ba0-b1c7-ace8-9a98-d726.ngrok-free.app/api/generate-token',
+          'https://f533-2600-1700-8520-9ba0-900a-87b4-ad47-3176.ngrok-free.app/api/generate-token',
           {
             method: 'GET',
             headers: {
@@ -42,7 +42,7 @@ export default function Signup() {
 
             try {
               const accountTokenResponse = await fetch(
-                `https://867f-2600-1700-8520-9ba0-b1c7-ace8-9a98-d726.ngrok-free.app/api/generate-account-token?newAccountID=${accountID}`,
+                `https://f533-2600-1700-8520-9ba0-900a-87b4-ad47-3176.ngrok-free.app/api/generate-account-token?newAccountID=${accountID}`,
                 {
                   method: 'GET',
                   headers: {
@@ -86,7 +86,7 @@ export default function Signup() {
     };
 
     fetchToken();
-  }, []);
+  }, [navigate]);
 
   return (
     <>
