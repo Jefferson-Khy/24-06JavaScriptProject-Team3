@@ -86,7 +86,7 @@ router.get('/retrieve-account', async (req, res) => {
   console.log('ACCOUNT ID FOR PROFILE BACKEND:', accountID);
 
   const moov = new Moov({
-    accountID: accountID,
+    accountID: process.env.MOOV_ACCOUNT_ID,
     publicKey: process.env.PUBLIC_KEY,
     secretKey: process.env.PRIVATE_KEY,
     domain: process.env.DOMAIN,
@@ -106,15 +106,29 @@ router.get('/retrieve-account', async (req, res) => {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
+          Origin:
+            'https://f533-2600-1700-8520-9ba0-900a-87b4-ad47-3176.ngrok-free.app',
+          Referer:
+            'https://f533-2600-1700-8520-9ba0-900a-87b4-ad47-3176.ngrok-free.app',
         },
       }
     );
 
-    console.log('Retrieved account details:', response);
+    console.log('Retrieved account details:', response.data);
 
-    return res.status(200).json(response);
+    return res.status(200).json(response.data);
   } catch (error) {
-    console.error(`Error retrieving account details: ${error.message}`);
+    // if (error.response) {
+    //   console.error(
+    //     `Error response data: ${JSON.stringify(error.response.data)}`
+    //   );
+    //   console.error(`Error response status: ${error.response.status}`);
+    //   console.error(
+    //     `Error response headers: ${JSON.stringify(error.response.headers)}`
+    //   );
+    // } else {
+    //   console.error(`Error message: ${error.message}`);
+    // }
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 });
